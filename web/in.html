@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例</title>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+
+        //发送ajax请求
+        $(function () {
+
+            $.get("provinceServlet",{},function (data) {
+     // [{"id":1,"name":"北京"},{"id":2,"name":"上海"},{"id":3,"name":"广州"},{"id":4,"name":"陕西"}]
+
+                //获取select
+                var province = $("#province");
+                //遍历数组
+                $(data).each(function () {
+
+                    //创建<option>
+                    var option="<option name='"+this.id+"'>"+this.name+"</option>";
+                    //调用 select 的append 追加 option
+                    province.append(option);
+
+                });
+
+            });
+        });
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+
+    <select id="province">
+        <option> 请选择省份  </option>
+
+    </select>
+</body>
+</html>
